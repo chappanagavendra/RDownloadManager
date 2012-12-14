@@ -62,6 +62,7 @@ typedef enum {
 @property (nonatomic, readonly) float progress;
 
 - (id)initWithURL:(NSURL *)url saveToPath:(NSString *)savePath;
+- (void)clearDownload;
 
 @end
 

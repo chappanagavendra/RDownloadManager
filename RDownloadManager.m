@@ -93,7 +93,8 @@
 
 - (void)addTask:(RDownloadTask *)task startImmediately:(BOOL)startImmediately
 {
-    [_taskList addObject:task];
+    [_taskList insertObject:task atIndex:0];
+//    [_taskList addObject:task];
     [self saveTaskList];
     if (startImmediately) {
         [self queueTask:task];
@@ -112,14 +113,15 @@
 
 - (void)stopTask:(RDownloadTask *)task
 {
-    if (task.status == RDownloadTaskStatusDownloading) {
+    if (task.status == RDownloadTaskStatusWaiting ||
+        task.status == RDownloadTaskStatusDownloading) {
         [task.operation cancel];
     }
 }
 
 - (void)removeTask:(RDownloadTask *)task
 {
-    [[NSFileManager defaultManager] removeItemAtPath:task.savePath error:NULL];
+    [task clearDownload];
     [self stopTask:task];
     if (task.status == RDownloadTaskStatusDownloading) {
     }
@@ -131,7 +133,7 @@
 {
     [self.downloadQueue cancelAllOperations];
     for (RDownloadTask *task in self.taskList) {
-        [[NSFileManager defaultManager] removeItemAtPath:task.savePath error:NULL];
+        [task clearDownload];
     }
     [self.taskList removeAllObjects];
     [[NSFileManager defaultManager] removeItemAtPath:self.pathForSaveFile error:NULL];
