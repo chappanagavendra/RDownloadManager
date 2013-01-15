@@ -135,7 +135,7 @@
     
     NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] initWithURL:self.url
                                                                  cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-                                                             timeoutInterval:10] autorelease];
+                                                             timeoutInterval:60] autorelease];
     request.HTTPMethod = @"GET";
     if (_userAgent) {
         [request addValue:_userAgent forHTTPHeaderField:@"User-Agent"];
