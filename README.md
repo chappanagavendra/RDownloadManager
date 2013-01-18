@@ -41,6 +41,9 @@ sharedDownloadManager.maxConcurrentDownloadTaskCount = 5;
 This code is distributed under the terms of the [GNU General Public License](http://www.gnu.org/licenses/gpl.html).  
 代码使用 [GNU General Public License](http://www.gnu.org/licenses/gpl.html) 许可发布.
 
+The original author, Alex Rezit, reserves the right to change the license.  
+原作者 Alex 保留更改此许可的权力.
+
 ## Donate 捐赠
 
 You can support me in various ways: Cash donation, purchasing items on Amazon Wishlists, or just improve my code and send a pull request.  
